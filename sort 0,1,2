@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+void printarray(int arr[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+void sortarray(int arr[],int n)
+{
+    int left=0,right=n-1;
+    while(left<right)
+    {
+        while(arr[left]==0||arr[left]==1)
+        {
+            left++;
+        }
+        while(arr[right]==2)
+        {
+            right--;
+        }
+        if(left<right)
+        {swap(arr[left],arr[right]);
+        left++;
+        right--;}
+    }
+    cout<<right<<endl;
+    printarray(arr,10);
+    if(arr[right]==2)
+     {right--; }
+    cout<<right<<endl;
+    int now=0;
+    while(now<right)
+    {
+        while(arr[now]==0)
+        {
+            now++;
+        }
+        while(arr[right]==1)
+        {
+            right--;
+        }
+        if(now<right)
+        swap(arr[now],arr[right]);
+        now++;
+        right--;
+    }
+
+}
+
+int main()
+{
+    int arr[10]={1,1,1,1,1,0,0,0,1,0};
+    sortarray(arr,10);
+    printarray(arr,10);
+    return 0;
+}
